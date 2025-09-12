@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, View } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
+import { TextInput, Button, Checkbox } from 'react-native-paper';
 
 export default function CrearTarea({ route, navigation }) {
   const { setTareas } = route.params;
