@@ -26,7 +26,7 @@ export default function CrearTarea({ route, navigation }) {
   return (
     <View style={styles.containerCrearTarea}>
       <TextInput
-        label="Título de la tarea"
+        label="Contenido de la tarea"
         value={titulo}
         style={styles.inputCrearTarea}
         onChangeText={setTitulo}

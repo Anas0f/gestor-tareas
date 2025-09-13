@@ -8,6 +8,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20
   },
+  fab: {
+    margin: 16,
+  },
   taskContainer: {
     flexDirection: 'row',
     alignItems: 'center',

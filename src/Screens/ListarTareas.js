@@ -44,6 +44,7 @@ export default function ListarTareas({ navigation }) {
 
         <FAB
           icon="plus"
+          style={styles.fab}
           onPress={() => navigation.navigate('CrearTarea', { setTareas })}
         />
       </View>
