@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View } from 'react-native';
+import { View, Alert } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
+import styles from '../Styles/styles';
 
 export default function EditarTarea({ route, navigation }) {
     const { tarea, setTareas } = route.params;
@@ -14,7 +15,7 @@ export default function EditarTarea({ route, navigation }) {
 
     const guardarTarea = () => {
         if (!tareaValida) {
-            Alert.alert('Error', 'El título de la tarea no puede estar vacío.', [{ text: 'OK' }]);
+            Alert.alert('Error', 'El contenido de la tarea no puede estar vacío.', [{ text: 'OK' }]);
             return;
         };
 
@@ -25,10 +26,11 @@ export default function EditarTarea({ route, navigation }) {
     };
 
     return (
-        <View>
+        <View style={styles.containerCrearTarea}>
             <TextInput
                 label="Editar tarea"
                 value={titulo}
+                style={styles.inputCrearTarea}
                 onChangeText={setTitulo}
             />
             <Button mode="contained" onPress={guardarTarea}>

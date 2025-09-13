@@ -1,36 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import { View, ScrollView, StyleSheet } from 'react-native';
-import { List, FAB, Button } from 'react-native-paper';
+import { View, ScrollView } from 'react-native';
+import { List, FAB, Button, IconButton } from 'react-native-paper';
+import styles from '../Styles/styles';
 
 export default function ListarTareas({ navigation }) {
   const [tareas, setTareas] = useState([]);
 
   return (
-    <View>
-      <ScrollView>
+    <ScrollView>
+      <View style={styles.container}>
         {tareas.map(item => (
           <View style={styles.taskContainer}>
             <List.Item
+              key={item.id}
               title={item.titulo}
               description={item.completed ? 'Completada' : 'Pendiente'}
-              style={{ flex: 1 }}
             />
 
-            <Button
-              mode="contained"
-              onPress={() => navigation.navigate('DetallarTarea', { tarea: item, setTareas })}
-              style={styles.button}
-            >
-              Ver Detalle
-            </Button>
+            <View style={styles.iconTareaListada}>
+              <IconButton
+                icon="eye"
+                iconColor={'#bc8dffff'}
+                size={30}
+                onPress={() =>
+                  navigation.navigate('DetallarTarea', {
+                    tarea: item,
+                    setTareas,
+                  })
+                }
+              />
 
-            <Button
-              mode="outlined"
-              onPress={() => navigation.navigate('EditarTarea', { tarea: item, setTareas })}
-              style={styles.button}
-            >
-              Editar
-            </Button>
+              <IconButton
+                icon="pencil"
+                iconColor={'#bc8dffff'}
+                size={30}
+                onPress={() =>
+                  navigation.navigate('EditarTarea', { tarea: item, setTareas })
+                }
+              />
+            </View>
           </View>
         ))}
 
@@ -38,18 +46,7 @@ export default function ListarTareas({ navigation }) {
           icon="plus"
           onPress={() => navigation.navigate('CrearTarea', { setTareas })}
         />
-      </ScrollView>
-    </View>
+      </View>
+    </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  taskContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 12,
-  },
-  button: {
-    marginLeft: 8,
-  },
-});

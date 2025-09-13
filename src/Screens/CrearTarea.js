@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, View } from 'react-native';
-import { TextInput, Button, Checkbox } from 'react-native-paper';
+import { TextInput, Button } from 'react-native-paper';
+import styles from '../Styles/styles'
 
 export default function CrearTarea({ route, navigation }) {
   const { setTareas } = route.params;
@@ -14,7 +15,7 @@ export default function CrearTarea({ route, navigation }) {
 
   const agregarTarea = () => {
     if (!tareaValida){
-        Alert.alert('Error', 'El título de la tarea no puede estar vacío.', [{ text: 'OK' }]);
+        Alert.alert('Error', 'El contenido de la tarea no puede estar vacío.', [{ text: 'OK' }]);
         return;
     };
 
@@ -23,10 +24,11 @@ export default function CrearTarea({ route, navigation }) {
   };
 
   return (
-    <View >
+    <View style={styles.containerCrearTarea}>
       <TextInput
         label="Título de la tarea"
         value={titulo}
+        style={styles.inputCrearTarea}
         onChangeText={setTitulo}
       />
       <Button mode="contained" onPress={agregarTarea}>
